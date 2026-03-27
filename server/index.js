@@ -29,7 +29,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chatapp-front-eyqj.onrender.com",
     methods: ["GET", "POST"],
   },
 });
@@ -88,6 +88,8 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING ON PORT 3001");
+const PORT = process.env.PORT || 3001; 
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
