@@ -42,9 +42,11 @@ function ChatPage({ user }) {
       const token = await auth.currentUser.getIdToken();
 
       const newSocket = io("https://chatapp-psws.onrender.com", {
-        auth: { token },
-        transports: ["websocket"]
-      });
+            auth: { token },
+            transports: ["polling", "websocket"],
+            reconnection: true,
+            withCredentials: true
+          });
 
       setSocket(newSocket);
     };

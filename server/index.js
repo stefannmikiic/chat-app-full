@@ -24,16 +24,17 @@ admin.initializeApp({
 });
 
 const app = express();
-app.use(cors());
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: "https://chatapp-front-eyqj.onrender.com",
     methods: ["GET", "POST"],
+    credentials: true
   },
 });
-
+app.use(cors({origin: "https://chatapp-front-eyqj.onrender.com"}));
 io.use(async (socket, next) => {
   const token = socket.handshake.auth.token;
   if (!token) {
