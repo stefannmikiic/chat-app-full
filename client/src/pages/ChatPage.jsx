@@ -41,8 +41,9 @@ function ChatPage({ user }) {
 
       const token = await auth.currentUser.getIdToken();
 
-      const newSocket = io("http://localhost:3001", {
-        auth: { token }
+      const newSocket = io("https://chatapp-psws.onrender.com", {
+        auth: { token },
+        transports: ["websocket"]
       });
 
       setSocket(newSocket);
