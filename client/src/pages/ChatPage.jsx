@@ -201,7 +201,7 @@ const sendMessage = async () => {
           <input
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder={`Poruka u #${activeRoom}...`}
+            placeholder={`Message in #${activeRoom}...`}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           />
           <button onClick={sendMessage}>Send</button>
